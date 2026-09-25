@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+班级作业系统
+</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>
+物联网应用技术XX班
+</h1>
+
+<p>
+班级作业共享平台
+</p>
+
+</header>
+
+
+
+<div class="container">
+
+
+<h2>
+📚 最新作业
+</h2>
+
+
+<ul id="fileList">
+
+</ul>
+
+
+
+
+
+
+
+<h2>
+📢 班级公告
+</h2>
+
+
+<div class="notice">
+
+9月30日前提交C语言实验报告
+
+</div>
+
+
+
+<h2 id="admin">
+
+📤 上传作业
+
+</h2>
+
+
+<input type="file" id="file">
+
+<button onclick="upload()">
+上传
+</button>
+
+
+
+
+
+
+</div>
+
+
+
+<footer>
+
+©2026 班级作业系统
+
+</footer>
+
+
+
+<script>
+
+
+let role =
+localStorage.getItem("role");
+
+
+//如果学生登录，隐藏上传
+
+if(role=="student"){
+
+document.getElementById("admin").style.display="none";
+
+}
+
+
+</script>
+
+
+<script src="script.js"></script>
+</body>
+
+</html>
