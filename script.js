@@ -65,15 +65,35 @@ fetch("/files")
         let li=document.createElement("li");
 
 
-        li.innerHTML=
+        let role = localStorage.getItem("role");
 
-        file+
+let deleteButton = "";
 
-        `
-        <a href="uploads/${file}" download>
-        下载
-        </a>
-        `;
+
+if(role=="admin"){
+
+    deleteButton = 
+    `
+    <button onclick="deleteFile('${file}')">
+    删除
+    </button>
+    `;
+
+}
+
+
+li.innerHTML =
+
+file+
+
+`
+<a href="uploads/${file}" download>
+下载
+</a>
+
+${deleteButton}
+
+`;
 
 
         list.appendChild(li);
@@ -83,3 +103,28 @@ fetch("/files")
 
 
 });
+
+
+function deleteFile(file){
+
+
+    fetch("/delete/"+file,{
+
+        method:"DELETE"
+
+    })
+
+    .then(res=>res.json())
+
+    .then(data=>{
+
+
+        alert(data.message);
+
+        location.reload();
+
+
+    });
+
+
+}

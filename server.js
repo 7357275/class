@@ -82,6 +82,51 @@ app.get("/files",(req,res)=>{
 
 });
 
+// 删除文件接口
+
+app.delete("/delete/:filename",(req,res)=>{
+
+
+    let filename = req.params.filename;
+
+
+    fs.unlink(
+        "uploads/" + filename,
+        (err)=>{
+
+
+            if(err){
+
+                console.log(err);
+
+
+                res.json({
+
+                    message:"删除失败"
+
+                });
+
+
+                return;
+
+            }
+
+
+
+            res.json({
+
+                message:"删除成功"
+
+            });
+
+
+        }
+
+    );
+
+
+});
+
 
 
 const PORT=process.env.PORT || 3000;
